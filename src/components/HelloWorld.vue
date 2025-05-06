@@ -17,6 +17,7 @@ const count = ref(0)
       Edit
       <code>components/HelloWorld.vue</code> to test HMR
     </p>
+    <i class="fa-brands fa-vuejs"></i>
   </div>
 
   <p>

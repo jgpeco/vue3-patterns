@@ -68,19 +68,39 @@ function showModal(new_item = true, item = {}) {
   <div class="project-container">
     
     <!-- Summary -->
-    <TodoSummary></TodoSummary>
+    <TodoSummary
+      :items="_items"
+      class="w3-margin-bottom"
+    ></TodoSummary>
 
     <!-- Filter -->
     <div class="w3-margin-bottom">
-      <TodoFilter></TodoFilter>
+      <TodoFilter
+        v-model="_filter"
+        class="flex-grow"
+      ></TodoFilter>
     </div>
 
     <!-- List -->
-    <TodoList></TodoList>
+    <TodoList
+      v-model="_items"
+      :filter="_filter"
+      @toggle="toggleStatus"
+      @edit="showModal(false, $event)"
+      @delete="deleteItem"
+    >
+      <button 
+        @click="showModal(true)"
+        class="w3-button w3-blue w3-round-xxlarge"
+      >
+        <i class="fa-solid fa-square-plus"></i>
+        New Item
+      </button>
+    </TodoList>
 
     <!-- Modals -->
     <Modal name="newEditItem" title="To-Do Item">
-      <TodoItemForm></TodoItemForm>
+      <TodoItemForm v-model="_item"></TodoItemForm>
     </Modal>
 
     <Modal name="deleteItem" title="Delete To-Do item">

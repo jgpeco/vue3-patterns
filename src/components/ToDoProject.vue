@@ -8,7 +8,7 @@ import TodoSummary from './TodoSummary.vue'
 
 const
   $modals = inject('$modals'),
-  _filter = ref('')
+  _filter = ref(''),
   _item = ref(todoService.getDefault()),
   _items = ref([])
 
